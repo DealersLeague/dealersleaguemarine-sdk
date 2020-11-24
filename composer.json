@@ -1,0 +1,32 @@
+{
+    "name": "dealersleague/dealersleaguemarine-sdk",
+    "description": "An SDK for working with Dealers League Marine API.",
+    "keywords": ["dealersleague", "sdk", "dealersleaguemarine", "php"],
+    "homepage": "https://github.com/DealersLeague/dealersleaguemarine-sdk",
+    "license": "MIT License",
+    "type": "library",
+    "authors": [
+       {
+            "name": "Walter Barcelos",
+            "email": "walter@dealersleague.com",
+            "homepage": "https://dealersleague.com"
+    }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "guzzlehttp/guzzle": "^6.5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.8.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "dealersleague\\marine\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "dealersleague\\marine\\Tests\\": "tests/"
+        }
+    }
+}
