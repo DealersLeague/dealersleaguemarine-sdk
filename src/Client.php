@@ -11,7 +11,7 @@ class Client {
 	protected $apiKey;
 
 	protected $authToken;
-	protected $apiUrl = 'https://api.dlcrm.local/v1/';
+	protected $apiUrl = 'https://providedurl.com/v1/';
 
 	protected $client;
 
@@ -81,18 +81,24 @@ class Client {
 		return $this->client->request( $method, $fullUri, $options, $asJson, $wantsGetContents );
 	}
 
+	/**
+	 * @return mixed|string
+	 * @throws Exceptions\DealersLeagueException
+	 * @throws \GuzzleHttp\Exception\GuzzleException
+	 */
 	public function getSettings() {
 
 		$uri      = '/settings/get';
-		$response = $this->request( 'GET', $uri );
+		return $this->request( 'GET', $uri );
 	}
 
 	/**
-	 * Get a listings page based on the given search options.
+	 *  Get a listings page based on the given search options.
 	 *
 	 * @param int $currentPage
 	 * @param array $searchOptions
 	 *
+	 * @return mixed|string
 	 * @throws Exceptions\DealersLeagueException
 	 * @throws \GuzzleHttp\Exception\GuzzleException
 	 */
@@ -100,7 +106,7 @@ class Client {
 
 		$uri = '/listing/get?page=' . $currentPage;
 		$options = empty( $searchOptions ) ? [] : [ 'body' => $searchOptions ];
-		$response = $this->request( 'POST', $uri, $options );
+		return $this->request( 'POST', $uri, $options );
 
 	}
 
@@ -109,65 +115,70 @@ class Client {
 	 *
 	 * @param $listingId
 	 *
+	 * @return mixed|string
 	 * @throws Exceptions\DealersLeagueException
 	 * @throws \GuzzleHttp\Exception\GuzzleException
 	 */
 	public function getSingleListing( $listingId ) {
 
 		$uri      = '/listing/get?id=' . $listingId;
-		$response = $this->request( 'GET', $uri );
+		return $this->request( 'GET', $uri );
 
 	}
 
 	/**
 	 * Get a list with all brokers
 	 *
+	 * @return mixed|string
 	 * @throws Exceptions\DealersLeagueException
 	 * @throws \GuzzleHttp\Exception\GuzzleException
 	 */
 	public function getBrokers() {
 
 		$uri = '/broker/get';
-		$response = $this->request( 'GET', $uri );
+		return $this->request( 'GET', $uri );
 
 	}
 
 	/**
 	 * Get a list with all locations
 	 *
+	 * @return mixed|string
 	 * @throws Exceptions\DealersLeagueException
 	 * @throws \GuzzleHttp\Exception\GuzzleException
 	 */
 	public function getLocations() {
 
 		$uri = '/location/get';
-		$response = $this->request( 'GET', $uri );
+		return $this->request( 'GET', $uri );
 
 	}
 
 	/**
 	 * Get a list with all categories
 	 *
+	 * @return mixed|string
 	 * @throws Exceptions\DealersLeagueException
 	 * @throws \GuzzleHttp\Exception\GuzzleException
 	 */
 	public function getCategories() {
 
-		$uri = 'category/get';
-		$response = $this->request( 'GET', $uri );
+		$uri = '/category/get';
+		return $this->request( 'GET', $uri );
 
 	}
 
 	/**
 	 * Get a list with all manufacturers
 	 *
+	 * @return mixed|string
 	 * @throws Exceptions\DealersLeagueException
 	 * @throws \GuzzleHttp\Exception\GuzzleException
 	 */
 	public function getManufacturers() {
 
 		$uri = '/manufacturer/get';
-		$response = $this->request( 'GET', $uri );
+		return $this->request( 'GET', $uri );
 
 	}
 
