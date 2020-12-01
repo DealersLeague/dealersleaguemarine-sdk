@@ -93,6 +93,17 @@ class Client {
 	}
 
 	/**
+	 * @return mixed|string
+	 * @throws Exceptions\DealersLeagueException
+	 * @throws \GuzzleHttp\Exception\GuzzleException
+	 */
+	public function getIntegrations() {
+
+		$uri      = '/integration/get';
+		return $this->request( 'GET', $uri );
+	}
+
+	/**
 	 *  Get a listings page based on the given search options.
 	 *
 	 * @param int $currentPage
