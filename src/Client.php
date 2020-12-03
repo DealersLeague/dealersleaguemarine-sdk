@@ -166,6 +166,34 @@ class Client {
 	}
 
 	/**
+	 * Get a list with all countries
+	 *
+	 * @return mixed|string
+	 * @throws Exceptions\DealersLeagueException
+	 * @throws \GuzzleHttp\Exception\GuzzleException
+	 */
+	public function getCountries() {
+
+		$uri = '/country/get';
+		return $this->request( 'GET', $uri );
+
+	}
+
+	/**
+	 * Get a list with all colour tags
+	 *
+	 * @return mixed|string
+	 * @throws Exceptions\DealersLeagueException
+	 * @throws \GuzzleHttp\Exception\GuzzleException
+	 */
+	public function getColourTags() {
+
+		$uri = '/colour/get';
+		return $this->request( 'GET', $uri );
+
+	}
+
+	/**
 	 * Get a list with all categories
 	 *
 	 * @return mixed|string
