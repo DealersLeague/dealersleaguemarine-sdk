@@ -221,5 +221,22 @@ class Client {
 
 	}
 
+	/**
+	 *  Send listings statistics
+	 *
+	 * @param array $listingAnalyticList
+	 *
+	 * @return mixed|string
+	 * @throws Exceptions\DealersLeagueException
+	 * @throws \GuzzleHttp\Exception\GuzzleException
+	 */
+	public function sendAnalytics( array $listingAnalyticList ) {
+
+		$uri = '/listing/analytics';
+		$options = empty( $listingAnalyticList ) ? [] : [ 'body' => $listingAnalyticList ];
+		return $this->request( 'POST', $uri, $options );
+
+	}
+
 
 }
