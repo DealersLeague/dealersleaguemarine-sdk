@@ -39,7 +39,7 @@ class Client {
 		if ( isset( $options[ 'client' ] ) ) {
 			$this->client = $options[ 'client' ];
 		} else {
-			$this->client = new HttpClient( [ 'exceptions' => false ] );
+			$this->client = new HttpClient( [ 'exceptions' => false, 'verify' => false] );
 		}
 
 	}
@@ -122,6 +122,24 @@ class Client {
 	}
 
 	/**
+	 *  Get a brokers page based on the given search options.
+	 *
+	 * @param int $currentPage
+	 * @param array $searchOptions
+	 *
+	 * @return mixed|string
+	 * @throws Exceptions\DealersLeagueException
+	 * @throws \GuzzleHttp\Exception\GuzzleException
+	 */
+	public function getBrokersPage( $currentPage = 0, $searchOptions = [] ) {
+
+		$uri = '/broker/get?page=' . $currentPage;
+		$options = empty( $searchOptions ) ? [] : [ 'body' => $searchOptions ];
+		return $this->request( 'POST', $uri, $options );
+
+	}
+
+	/**
 	 * Get a single listing with the given id
 	 *
 	 * @param $listingId
@@ -137,33 +155,33 @@ class Client {
 
 	}
 
-	/**
-	 * Get a list with all brokers
-	 *
-	 * @return mixed|string
-	 * @throws Exceptions\DealersLeagueException
-	 * @throws \GuzzleHttp\Exception\GuzzleException
-	 */
-	public function getBrokers() {
+	// /**
+	//  * Get a list with all brokers
+	//  *
+	//  * @return mixed|string
+	//  * @throws Exceptions\DealersLeagueException
+	//  * @throws \GuzzleHttp\Exception\GuzzleException
+	//  */
+	// public function getBrokers() {
 
-		$uri = '/broker/get';
-		return $this->request( 'GET', $uri );
+	// 	$uri = '/broker/get';
+	// 	return $this->request( 'GET', $uri );
 
-	}
+	// }
 
-	/**
-	 * Get a list with all locations
-	 *
-	 * @return mixed|string
-	 * @throws Exceptions\DealersLeagueException
-	 * @throws \GuzzleHttp\Exception\GuzzleException
-	 */
-	public function getLocations() {
+	// /**
+	//  * Get a list with all locations
+	//  *
+	//  * @return mixed|string
+	//  * @throws Exceptions\DealersLeagueException
+	//  * @throws \GuzzleHttp\Exception\GuzzleException
+	//  */
+	// public function getLocations() {
 
-		$uri = '/location/get';
-		return $this->request( 'GET', $uri );
+	// 	$uri = '/location/get';
+	// 	return $this->request( 'GET', $uri );
 
-	}
+	// }
 
 	/**
 	 * Get a list with all countries
