@@ -256,5 +256,13 @@ class Client {
 
 	}
 
+	public function sendListingid($id, $type) {
+        $uri = '/listing/add_statistics';
+        return $this->request( 'POST', $uri, [ 'form_params' => [
+            "type"=> $type,
+            "listing_id" => $id
+        ] ] );
+    }  
+
 
 }
